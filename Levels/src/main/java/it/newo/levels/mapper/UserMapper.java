@@ -52,4 +52,17 @@ public class UserMapper {
 		
 		return dto;
 	}
+	
+	public User fromDTO(UserDTO admin) {
+		User a = new User();
+		a.setRole(admin.getRole());
+		a.setName(admin.getName());
+		a.setSurname(admin.getSurname());
+		a.setEmail(admin.getEmail());
+		a.setUsername(admin.getUsername());
+		a.setPassword(admin.getPassword());
+		a.setActive(admin.isActive());
+		
+		return a;
+	}
 }

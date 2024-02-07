@@ -10,6 +10,6 @@ public interface UserFacade {
 	void disableUser(long userID);
 	void enableUser(long userID);
 	void signUp(UserDTO user);
+	void signIn(UserDTO user);
 	void unsubscribe(UserDTO user);
-	List<UserDTO> getAll();
 }

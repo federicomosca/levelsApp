@@ -14,5 +14,6 @@ public class TaskMapper {
 		t.setTitle(dto.getTitle());
 		t.setDescription(dto.getDescription());
 		
+		return t;
 	}
 }
