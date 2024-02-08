@@ -1,5 +1,8 @@
 package it.newo.levels.facade.implementation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.newo.levels.dto.UserDTO;
@@ -18,21 +21,14 @@ public class UserFacadeImplementation implements UserFacade {
 	private UserMapper userMapper;
 
 	@Override
-	public void newAdmin(UserDTO admin) {
+	public void createAdmin(UserDTO admin) {
 		userService.save(userMapper.fromDTO(admin));
 	}
 
 	@Override
-	public void disableUser(long userID) {
+	public void toggleUserActivityStatus(long userID) {
 		User u = userService.get(userID);
-		if(u.isActive()) u.setActive(false);
-		userService.save(u);
-	}
-
-	@Override
-	public void enableUser(long userID) {
-		User u = userService.get(userID);
-		if(!u.isActive()) u.setActive(true);
+		if(u.isActive()) u.setActive(false); else u.setActive(true);
 		userService.save(u);
 	}
 
@@ -51,5 +47,14 @@ public class UserFacadeImplementation implements UserFacade {
 		User u = userMapper.fromDTO(user);
 		u.setActive(false);
 		userService.save(u);
+	}
+
+	@Override
+	public List<UserDTO> getAll() {
+		List<UserDTO> users = new ArrayList<>();
+		for(User u : userService.getAll()) {
+			users.add(userMapper.toDTO(u, null, null));
+		}
+		return users;
 	}
 }
