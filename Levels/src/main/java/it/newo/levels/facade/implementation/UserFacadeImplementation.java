@@ -1,10 +1,11 @@
 package it.newo.levels.facade.implementation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import it.newo.levels.dto.LoginDTO;
 import it.newo.levels.dto.UserDTO;
 import it.newo.levels.facade.definition.UserFacade;
 import it.newo.levels.mapper.UserMapper;
@@ -38,23 +39,19 @@ public class UserFacadeImplementation implements UserFacade {
 	}
 
 	@Override
-	public void signIn(UserDTO user) {
+	public void signIn(LoginDTO user) {
 		userService.authenticate(user.getUsername(), user.getPassword());
 	}
 
 	@Override
-	public void unsubscribe(UserDTO user) {
+	public void unsubscribe(LoginDTO user) {
 		User u = userMapper.fromDTO(user);
 		u.setActive(false);
 		userService.save(u);
 	}
 
 	@Override
-	public List<UserDTO> getAll() {
-		List<UserDTO> users = new ArrayList<>();
-		for(User u : userService.getAll()) {
-			users.add(userMapper.toDTO(u, null, null));
-		}
-		return users;
+	public List<User> getAll() {
+		return userService.getAll();
 	}
 }

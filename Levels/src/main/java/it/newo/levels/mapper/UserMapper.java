@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import it.newo.levels.dto.LoginDTO;
 import it.newo.levels.dto.UserDTO;
 import it.newo.levels.model.User;
 import it.newo.levels.model.UsersGoals;
@@ -64,5 +65,14 @@ public class UserMapper {
 		a.setActive(admin.isActive());
 		
 		return a;
+	}
+	
+	public User fromDTO(LoginDTO dto) {
+		User u = new User();
+
+		u.setId(dto.getId());
+		u.setUsername(dto.getUsername());
+		u.setPassword(dto.getPassword());
+		return u;
 	}
 }
