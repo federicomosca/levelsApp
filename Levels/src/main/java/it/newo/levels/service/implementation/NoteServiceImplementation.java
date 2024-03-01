@@ -31,4 +31,9 @@ public class NoteServiceImplementation implements NoteService{
 	public List<Note> getAll() {
 		return store.findAll();
 	}
+
+	@Override
+	public void delete(long id) {
+		store.deleteById(id);
+	}
 }

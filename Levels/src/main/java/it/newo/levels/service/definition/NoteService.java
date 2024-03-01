@@ -9,4 +9,5 @@ public interface NoteService {
 	void save(Note note);
 	Note get(long id);
 	List<Note> getAll();
+	void delete(long id);
 }
