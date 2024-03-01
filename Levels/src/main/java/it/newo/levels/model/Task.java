@@ -23,6 +23,9 @@ public class Task {
 	private long id;
 	
 	@Column
+	private boolean done = false;
+	
+	@Column
 	private String title;
 	
 	@Column

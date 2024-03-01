@@ -9,4 +9,5 @@ public interface TaskService {
 	void save(Task task);
 	Task get(long id);
 	List<Task> getAll();
+	void delete(long id);
 }

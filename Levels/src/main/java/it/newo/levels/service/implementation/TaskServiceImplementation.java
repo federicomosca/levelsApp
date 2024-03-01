@@ -32,4 +32,9 @@ public class TaskServiceImplementation implements TaskService {
 		return store.findAll();
 	}
 
+	@Override
+	public void delete(long id) {
+		store.deleteById(id);
+	}
+
 }

@@ -11,5 +11,5 @@ public interface GoalFacade {
 	Goal select(long id);
 	List<Goal> selectAll();
 	void delete(long id);
-	void archive(long id);
+	void toggleArchivedStatus(long id);
 }

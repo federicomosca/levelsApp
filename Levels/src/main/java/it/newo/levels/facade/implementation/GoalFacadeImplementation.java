@@ -45,7 +45,7 @@ public class GoalFacadeImplementation implements GoalFacade {
 	}
 
 	@Override
-	public void archive(long id) {
+	public void toggleArchivedStatus(long id) {
 		Goal g = goalService.get(id);
 		if (g!=null) { 
 			if (g.isArchived()) g.setArchived(false); else g.setArchived(true);
