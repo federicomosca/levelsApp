@@ -1,7 +1,6 @@
 package it.newo.levels.service.implementation;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -35,6 +34,11 @@ public class GoalServiceImplementation implements GoalService{
 	@Override
 	public List<Goal> getAll() {
 		return store.findAll();
+	}
+
+	@Override
+	public void delete(long id) {
+		store.deleteById(id);
 	}
 
 }

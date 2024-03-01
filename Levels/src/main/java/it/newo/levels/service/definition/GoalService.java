@@ -10,4 +10,5 @@ public interface GoalService {
 	Goal get(long id);
 	Goal get(String title);
 	List<Goal> getAll();
+	void delete(long id);
 }

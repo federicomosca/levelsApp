@@ -3,10 +3,13 @@ package it.newo.levels.facade.implementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import it.newo.levels.dto.LoginDTO;
 import it.newo.levels.dto.UserDTO;
+import it.newo.levels.exceptions.ExceptionHandler;
+import it.newo.levels.exceptions.UserNotFoundException;
 import it.newo.levels.facade.definition.UserFacade;
 import it.newo.levels.mapper.UserMapper;
 import it.newo.levels.model.User;
@@ -29,8 +32,11 @@ public class UserFacadeImplementation implements UserFacade {
 	@Override
 	public void toggleUserActivityStatus(long userID) {
 		User u = userService.get(userID);
-		if(u.isActive()) u.setActive(false); else u.setActive(true);
-		userService.save(u);
+		if(u!=null) {
+			if(u.isActive()) u.setActive(false); else u.setActive(true);
+			userService.save(u);						
+		} else throw new UserNotFoundException("can't find user with id: "+userID);
+		
 	}
 
 	@Override

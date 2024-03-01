@@ -26,6 +26,9 @@ public class Goal{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Column
+	private boolean archived = false;
+	
 	@Column(nullable = false)
 	private String title;
 	
